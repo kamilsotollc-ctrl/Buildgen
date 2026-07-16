@@ -1,0 +1,20 @@
+project:
+  name: hello-buildgen
+  version: "0.1.0"
+
+steps:
+  configure:
+    unix: ["python3 -c \"print('Configuring hello-buildgen...')\""]
+    windows: ["python -c \"print('Configuring hello-buildgen...')\""]
+
+  build:
+    unix: ["python3 build_hello.py"]
+    windows: ["python build_hello.py"]
+
+  test:
+    unix: ["python3 -m pytest test_hello.py -q"]
+    windows: ["python -m pytest test_hello.py -q"]
+
+  install:
+    unix: ["echo 'Install step complete (no-op in this example)'"]
+    windows: ["echo Install step complete (no-op in this example)"]
