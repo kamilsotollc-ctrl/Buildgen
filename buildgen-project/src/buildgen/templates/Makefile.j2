@@ -1,0 +1,36 @@
+SHELL := /bin/sh
+.PHONY: all configure build test install
+
+all: configure build
+
+configure:
+{% for cmd in configure %}
+	{{ cmd }}
+{% endfor %}
+{% if not configure %}
+	@echo "(no configure step defined)"
+{% endif %}
+
+build:
+{% for cmd in build %}
+	{{ cmd }}
+{% endfor %}
+{% if not build %}
+	@echo "(no build step defined)"
+{% endif %}
+
+test:
+{% for cmd in test %}
+	{{ cmd }}
+{% endfor %}
+{% if not test %}
+	@echo "(no test step defined)"
+{% endif %}
+
+install:
+{% for cmd in install %}
+	{{ cmd }}
+{% endfor %}
+{% if not install %}
+	@echo "(no install step defined)"
+{% endif %}
